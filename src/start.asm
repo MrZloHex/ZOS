@@ -1,5 +1,3 @@
-.INCLUDE 	std.asm
-
 SECTION TEXT
 
 		MIH 0xEF
@@ -9,13 +7,25 @@ SECTION TEXT
 		JMP
 END
 
-
+.INCLUDE 	std.asm
 .INCLUDE	keyboard.asm
+.INCLUDE 	screen.asm
 
 
 SECTION TEXT
-
-_start:		CALL(readkey, _next)
-_next: 		HLT
+	; Initialization
+_start:		MIA 0
+	
+	; Welcome to screen
+		MIA welcome_str%H
+		MIB welcome_str%L
+		MID 0
+		MIC 0
+		CALL(putstr, _next)
+_next:		CALL(readkey, _exit)
+_exit: 		HLT
 
 END
+
+.INCLUDE 	text.asm
+

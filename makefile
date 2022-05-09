@@ -22,5 +22,11 @@ run: all
 
 clean:
 	-rm -f $(TARGET)
+	-rm -f test
+	-rm -f macro_rules.m4
+	-rm -f output.zas
+
+test: clean
+	$(ASMC) $(ASM_FLAGS) -i=tests/test.asm -o=test -I=$(INC)
 
 

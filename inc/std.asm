@@ -30,9 +30,39 @@
 .ENDDEF
 
 .DEF 	LOAD_REG
-		POB
-		POC
-		POD
 		POE
+		POD
+		POC
+		POB
 .ENDDEF
 
+.DEF 	NULL 	0
+
+
+SECTION TEXT
+	; A - H reg
+	; B - L reg
+inc_address:	MAH
+		MBL
+		MIA 1
+		ADL
+		MAL
+		PUH
+		PUL
+		LEA(_exit_inc_addr)
+		JRZ
+		
+		POL
+		POH
+		MIA 1
+		ADH
+		MAH
+		PUH
+		PUL
+
+_exit_inc_addr:	POB
+		POA
+		RET
+
+
+END
