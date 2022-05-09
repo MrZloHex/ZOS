@@ -14,15 +14,15 @@ END
 
 SECTION TEXT
 	; Initialization
-_start:		MIA 0
+_start:		INIT_KEYBOARD
 	
 	; Welcome to screen
-		MIA welcome_str%H
-		MIB welcome_str%L
-		MID 0
-		MIC 0
-		CALL(putstr, _next)
-_next:		CALL(readkey, _exit)
+		SETUP_PRINT(welcome_str, 0, 0)
+		CALL(putstr, start_shell)
+	; Input command
+start_shell:	SETUP_PRINT(cursor_str, 0, 1)
+		CALL(putstr, read_cmd)
+read_cmd:	CALL(readstr, _exit)
 _exit: 		HLT
 
 END

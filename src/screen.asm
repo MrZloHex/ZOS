@@ -1,3 +1,13 @@
+.DEF 	SETUP_PRINT
+	; $1 - Label to string
+	; $2 - X Position
+	; $3 - Y Position
+		MIA $1%H
+		MIB $1%L
+		MID $2
+		MIC $3
+.ENDDEF
+
 .DEF 	SET_BX
 		MIH 0x80
 		MIL 0x00
@@ -23,7 +33,9 @@
 .DEF 	PUTCHAR
 		MIH 0xF0
 		MIL 0x04
-		M$1M
+		MI$1 0x80
+		OR$1
+		MAM
 .ENDDEF
 
 SECTION TEXT
@@ -33,8 +45,7 @@ SECTION TEXT
 	; C - Y pos
 putchar:	SET_X(B)
 		SET_Y(C)
-		PUTCHAR(A)
-		
+		PUTCHAR(D)
 		RET
 
 

@@ -1,3 +1,11 @@
+
+.DEF 	INIT_KEYBOARD
+		MIH 0xF0
+		MIL 0x00
+		MIA 0b00000010
+		MAM
+.ENDDEF
+
 .DEF 	READ_KEY
 		MIH 0xF0
 		MIL 0x01
@@ -7,33 +15,69 @@
 .DEF 	NEXT_KEY
 		MIH 0xF0
 		MIL 0x00
-		MIB 0b00000011
-		MIL 0b00000010
-		MBM
+		MIC 0b00000011
+		MID 0b00000010
 		MCM
+		MDM
 .ENDDEF
 
 SECTION TEXT
 
-readkey:	SAVE_REG
-		PUA
+readkey:	PUB
+		PUC
+		PUD
 
-_loop_readkey:	POA
-		READ_KEY
+_loop_readkey:	READ_KEY
 		PUA
 	; If MSB == 1 then is available to read a key
 		MIB 0b10000000
 		ANB
 		CPB
+		POA
 		LEA(_loop_readkey)
 		JRZ
 	; Fetch ASCII code of char
-		POA
 		XRB
 
 		NEXT_KEY
 
-		LOAD_REG
+		POD
+		POC
+		POB
+		RET
+
+
+readstr:	PUB
+		PUC
+		
+		MIC 0
+_loop_readstr:	CALL(readkey, _after_rdk)
+
+_after_rdk: 	MIB 0xA
+		CPB
+		LEA(_exit_readstr)
+		JSZ
+		
+		MIH 0x83
+		MCL
+		MAM
+	
+		MIA 1
+		ADC
+		MAC
+		
+		LEA(_loop_readstr)
+		JMP
+
+_exit_readstr:	MIH 0x83
+		MCL
+		MIA 0
+		MAM
+
+		MCA
+
+		POC
+		POB
 		RET
 
 END
