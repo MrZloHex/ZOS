@@ -17,6 +17,24 @@ _l1_shrn:	PUA
 _exit_shrn:	POC
 		RET
 
+	; A << B
+shiftln:	PUC
+		MIC 0
+_loop_shln:	CALL(shiftl, _l1_shln)
+_l1_shln:	PUA
+		MIA 1
+		ADC
+		MAC
+		MBA
+		CPC
+		POA
+		LEA(_exit_shln)
+		JSZ
+		LEA(_loop_shln)
+		JMP
+_exit_shln:	POC
+		RET
+
 	; A - value
 shiftr:		PUB
 		PUC
