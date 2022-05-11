@@ -3,9 +3,9 @@ SECTION TEXT
 	MIH 0xEF
 	MIL 0xFF
 	LSP
-	MIA 0x69
-	CALL(shiftr, _next)
-_next:	CALL(shiftl, _exit)
+	MIA 0x80
+	MIB 0x4
+_next:	CALL(shiftrn, _exit)
 _exit:	HLT
 
 END

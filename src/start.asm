@@ -9,6 +9,9 @@ END
 
 .INCLUDE 	std.asm
 .INCLUDE 	string.asm
+.INCLUDE 	math.asm
+.INCLUDE 	operations.asm
+
 .INCLUDE	keyboard.asm
 .INCLUDE 	screen.asm
 

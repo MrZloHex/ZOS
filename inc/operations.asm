@@ -1,4 +1,22 @@
 SECTION TEXT
+	; A >> B
+shiftrn:	PUC
+		MIC 0
+_loop_shrn:	CALL(shiftr, _l1_shrn)
+_l1_shrn:	PUA
+		MIA 1
+		ADC
+		MAC
+		MBA
+		CPC
+		POA
+		LEA(_exit_shrn)
+		JSZ
+		LEA(_loop_shrn)
+		JMP
+_exit_shrn:	POC
+		RET
+
 	; A - value
 shiftr:		PUB
 		PUC
