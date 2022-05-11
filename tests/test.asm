@@ -3,8 +3,8 @@ SECTION TEXT
 	MIH 0xEF
 	MIL 0xFF
 	LSP
-	MIA 0x80
-	CALL(shiftr, _next)
+	MIA 0x40
+	CALL(shiftl, _next)
 _next:	HLT
 
 END

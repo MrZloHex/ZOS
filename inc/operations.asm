@@ -50,4 +50,54 @@ _exit_shr:	POA
 		POB
 		RET
 
+	; A - value
+shiftl:		PUB
+		PUC
+		PUD
+		PUE
+		
+		MID 0b00000001
+		MIE 0b00000010
+		MIC 0
+		MIB 0
+_loop_shl:	PUA
+		AND
+		CPD
+		LEA(_one_shl)
+		JSZ
+		MIC 0x00
+		LEA(_setbit_shl)
+		JMP
+_one_shl: 	MIC 0xFF
+		LEA(_setbit_shl)
+		JMP
+	
+_setbit_shl:	MCA
+		ANE
+		ORB
+		MAB
+		PUB
+		MIB 2
+		MDA
+		CALL(multiply, _l1_shl)
+_l1_shl:	MAD
+		MIB 2
+		MEA
+		CALL(multiply, _l2_shl)
+_l2_shl:	MAE
+		POB
+		MIA 0x80
+		CPD
+		LEA(_exit_shl)
+		JSZ
+		POA
+		LEA(_loop_shl)
+		JMP
+_exit_shl:	POA
+		MBA
+		POE
+		POD
+		POC
+		POB
+		RET
 END
