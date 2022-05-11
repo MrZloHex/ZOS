@@ -3,17 +3,15 @@ SECTION TEXT
 	MIH 0xEF
 	MIL 0xFF
 	LSP
-	MIA str1%H
-	MIB str1%L
-	MIC str2%H
-	MID str2%L
-	CALL(strcmp, _next)
+	MIA 0x1e
+	MIB 0x2b
+	CALL(multiply, _next)
 _next:	HLT
 
 END
 
 .INCLUDE 	std.asm
-.INCLUDE 	string.asm
+.INCLUDE 	math.asm
 
 SECTION DATA
 

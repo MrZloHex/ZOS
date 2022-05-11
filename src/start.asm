@@ -8,6 +8,7 @@ SECTION TEXT
 END
 
 .INCLUDE 	std.asm
+.INCLUDE 	string.asm
 .INCLUDE	keyboard.asm
 .INCLUDE 	screen.asm
 
