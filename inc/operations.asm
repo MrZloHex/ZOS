@@ -6,7 +6,7 @@ shiftr:		PUB
 		PUE
 		
 		MID 0b00000010
-		MIC 0b00000001
+		MIE 0b00000001
 		MIC 0
 		MIB 0
 _loop_shr:	PUA
@@ -35,7 +35,7 @@ _l1_shr:	MAD
 		CALL(multiply, _l2_shr)
 _l2_shr:	MAE
 		POB
-		MIA 0x80
+		MIA 0x0
 		CPD
 		LEA(_exit_shr)
 		JSZ
