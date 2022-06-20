@@ -15,18 +15,24 @@ END
 .INCLUDE	keyboard.asm
 .INCLUDE 	screen.asm
 
+.INCLUDE 	list.asm
+
 
 SECTION TEXT
 	; Initialization
-_start:		INIT_KEYBOARD
+_start:		INIT_SCREEN
+		INIT_KEYBOARD
 	
 	; Welcome to screen
 		SETUP_PRINT(welcome_str, 0, 0)
-		CALL(putstr, start_shell)
+		CALL(putstr, shellexec)
+shellexec: 	CLEAR_CHAR(B)
+		SETUP_PRINT(cursor_str, 0, 2)
+		CALL(putstr, _here)
+_here:		CLEAR_CHAR(B)		
 	; Input command
-start_shell:	SETUP_PRINT(cursor_str, 0, 1)
-		CALL(putstr, read_cmd)
-read_cmd:	CALL(readstr, _exit)
+_loop:		LEA(_loop)
+		JMP
 _exit: 		HLT
 
 END

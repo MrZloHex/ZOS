@@ -1,3 +1,23 @@
+.DEF 	INIT_SCREEN
+
+		MIA 0
+		MIH 0xF0
+		MIL 0x02
+		MAM
+		MIL 0x03
+		MAM
+		MIL 0x04
+		MAM
+		MIH 0x80
+		MAM
+		MIL 0x03
+		MAM
+		MIL 0x02
+		MAM
+
+.ENDDEF
+
+
 .DEF 	SETUP_PRINT
 	; $1 - Label to string
 	; $2 - X Position
@@ -35,6 +55,15 @@
 		MIL 0x04
 		MI$1 0x80
 		OR$1
+		MAM
+.ENDDEF
+
+.DEF 	CLEAR_CHAR
+		MIH 0xF0
+		MIL 0x04
+		MMA
+		MI$1 0x7F
+		AN$1
 		MAM
 .ENDDEF
 
