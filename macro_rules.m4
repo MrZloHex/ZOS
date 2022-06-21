@@ -20,6 +20,10 @@ m4_define(`LOAD_REG', `POE
 		POB')m4_dnl
 m4_define(`LL', `MI$2 $1%H
 		MI$3 $1%L')m4_dnl
+m4_define(`LADR', `MI$3 $1
+		MI$4 $2')m4_dnl
+m4_define(`LEIA', `MIH $1
+		MIL $2 ')m4_dnl
 m4_define(`NULL', `0')m4_dnl
 m4_define(`INIT_KEYBOARD', `MIH 0xF0
 		MIL 0x00

@@ -1,0 +1,4 @@
+SECTION TEXT
+quit:       HLT
+
+END

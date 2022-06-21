@@ -55,6 +55,14 @@
 		MI$4 $2
 .ENDDEF
 
+	; LADR - Load Effective Imm Address
+.DEF 	LEIA
+	; $1 - High Address
+	; $2 - Low  Address
+		MIH $1
+		MIL $2 
+.ENDDEF
+
 .DEF 	NULL 	0
 
 

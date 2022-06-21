@@ -135,4 +135,45 @@ _exit_putstr:	CLEAR_CHAR(B)
 		POE
 		RET
 
+
+	; A - char
+	; B - start line
+	; C - end line exclusive
+fill_screen:	PUD
+		PUE
+
+		MID 0
+		PUA
+_fl_scr_loop:	POA
+		SET_X(D)
+		SET_Y(B)
+		PUTCHAR(E)
+
+		PUA
+		MIE 1
+		MDA
+		ADE
+		MAD
+
+		MIA 40
+		CPD
+		LEA(_fl_scr_loop)
+		JRZ
+
+		MID 0
+
+		MBA
+		ADE
+		MAB
+
+		MCA
+		CPB
+		LEA(_fl_scr_loop)
+		JRZ
+		
+		POA
+		POD
+		POE
+		RET
+
 END

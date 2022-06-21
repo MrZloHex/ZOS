@@ -17,6 +17,8 @@ END
 
 .INCLUDE 	shell.asm
 .INCLUDE 	help.asm
+.INCLUDE 	list.asm
+.INCLUDE 	quit.asm
 
 
 SECTION TEXT
