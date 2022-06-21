@@ -38,6 +38,11 @@
 		MIL 0x02
 		M$1M
 .ENDDEF
+.DEF 	GET_BX
+		MIH 0x80
+		MIL 0x00
+		MM$1
+.ENDDEF
 
 .DEF 	SET_BY
 		MIH 0x80
@@ -48,6 +53,11 @@
 		MIH 0xF0
 		MIL 0x03
 		M$1M
+.ENDDEF
+.DEF 	GET_BY
+		MIH 0x80
+		MIL 0x01
+		MM$1
 .ENDDEF
 
 .DEF 	PUTCHAR
@@ -73,7 +83,9 @@ SECTION TEXT
 	; B - X pos
 	; C - Y pos
 putchar:	SET_X(B)
+		SET_BX(B)
 		SET_Y(C)
+		SET_BY(C)
 		PUTCHAR(D)
 		RET
 
@@ -116,7 +128,8 @@ _cyc_putstr: 	MED
 		JMP
 
 		
-_exit_putstr:	POB
+_exit_putstr:	CLEAR_CHAR(B)
+		POB
 		POL
 		POH
 		POE

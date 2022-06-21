@@ -1,5 +1,5 @@
 SECTION TEXT
-
+	; SET Stack Pointer
 		MIH 0xEF
 		MIL 0xFF
 		LSP
@@ -16,7 +16,7 @@ END
 .INCLUDE 	screen.asm
 
 .INCLUDE 	shell.asm
-.INCLUDE 	list.asm
+.INCLUDE 	help.asm
 
 
 SECTION TEXT
@@ -26,16 +26,11 @@ _start:		INIT_KEYBOARD
 	
 	; Welcome to screen
 		SETUP_PRINT(info_os_str, 0, 0)
-		CALL(putstr, shellexec)
-shellexec: 	CLEAR_CHAR(B)
-		SETUP_PRINT(cursor_str, 0, 2)
-		CALL(putstr, _here)
-_here:		CLEAR_CHAR(B)		
-	; Input command\
-		CALL(readkey, _here1)
-_here1: 	MIB 2
-		MIC 2
-		CALL(putchar, _loop)
+		CALL(putstr, _welcome)
+_welcome: 	SETUP_PRINT(welcome_str, 0, 2)
+		CALL(putstr, _shell)
+_shell: 	CALL(shell, _proc)
+_proc:		CALL(process_cmd, _shell)
 
 _loop: 		LEA(_loop)
 		JMP

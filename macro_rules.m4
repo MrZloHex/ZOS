@@ -18,6 +18,8 @@ m4_define(`LOAD_REG', `POE
 		POD
 		POC
 		POB')m4_dnl
+m4_define(`LL', `MI$2 $1%H
+		MI$3 $1%L')m4_dnl
 m4_define(`NULL', `0')m4_dnl
 m4_define(`INIT_KEYBOARD', `MIH 0xF0
 		MIL 0x00
@@ -59,12 +61,18 @@ m4_define(`SET_BX', `MIH 0x80
 m4_define(`SET_X', `MIH 0xF0
 		MIL 0x02
 		M$1M')m4_dnl
+m4_define(`GET_BX', `MIH 0x80
+		MIL 0x00
+		MM$1')m4_dnl
 m4_define(`SET_BY', `MIH 0x80
 		MIL 0x01
 		M$1M')m4_dnl
 m4_define(`SET_Y', `MIH 0xF0
 		MIL 0x03
 		M$1M')m4_dnl
+m4_define(`GET_BY', `MIH 0x80
+		MIL 0x01
+		MM$1')m4_dnl
 m4_define(`PUTCHAR', `MIH 0xF0
 		MIL 0x04
 		MI$1 0x80

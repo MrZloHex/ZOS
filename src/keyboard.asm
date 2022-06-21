@@ -26,6 +26,7 @@
 
 SECTION TEXT
 
+	; RET - A char
 readkey:	PUB
 		PUC
 		PUD
@@ -50,7 +51,7 @@ _loop_readkey:	NEXT_KEY
 		POB
 		RET
 
-
+	; RET - 0x8300 - string
 readstr:	PUB
 		PUC
 		

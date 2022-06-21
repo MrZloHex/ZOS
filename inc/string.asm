@@ -1,5 +1,6 @@
 SECTION TEXT
 	; AB - str
+	; RET - A - length
 strlen: 	PUC
 		MIC 0
 _loop_strlen:	MAH
@@ -29,6 +30,7 @@ _exit_strlen:	MCA
 	
 	; AB - str1
 	; CD - str2
+	; RET - A bool
 strcmp:		PUE
 		
 		PUA

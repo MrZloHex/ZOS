@@ -1,5 +1,5 @@
 SECTION TEXT
-	; A >> B
+	; A = A >> B
 shiftrn:	PUC
 		MIC 0
 _loop_shrn:	CALL(shiftr, _l1_shrn)

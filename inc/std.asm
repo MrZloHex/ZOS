@@ -36,6 +36,25 @@
 		POB
 .ENDDEF
 
+	; LL - Load Label
+.DEF 	LL
+	; $1 - Label
+	; $2 - High Register
+	; $3 - Low  Register
+		MI$2 $1%H
+		MI$3 $1%L
+.ENDDEF
+
+	; LADR - Load Address
+.DEF 	LADR
+	; $1 - High Address
+	; $2 - Low  Address
+	; $3 - High Register
+	; $4 - Low  Register
+		MI$3 $1
+		MI$4 $2
+.ENDDEF
+
 .DEF 	NULL 	0
 
 
