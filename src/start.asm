@@ -15,6 +15,7 @@ END
 .INCLUDE	keyboard.asm
 .INCLUDE 	screen.asm
 
+.INCLUDE 	shell.asm
 .INCLUDE 	list.asm
 
 
@@ -24,7 +25,7 @@ _start:		INIT_KEYBOARD
 		INIT_SCREEN
 	
 	; Welcome to screen
-		SETUP_PRINT(welcome_str, 0, 0)
+		SETUP_PRINT(info_os_str, 0, 0)
 		CALL(putstr, shellexec)
 shellexec: 	CLEAR_CHAR(B)
 		SETUP_PRINT(cursor_str, 0, 2)

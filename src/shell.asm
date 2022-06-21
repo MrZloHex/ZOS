@@ -1,0 +1,11 @@
+
+SECTION TEXT
+
+END
+
+
+SECTION DATA
+
+cursor_str:	0x3E 0x20 NULL
+
+END
