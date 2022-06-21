@@ -20,8 +20,8 @@ END
 
 SECTION TEXT
 	; Initialization
-_start:		INIT_SCREEN
-		INIT_KEYBOARD
+_start:		INIT_KEYBOARD
+		INIT_SCREEN
 	
 	; Welcome to screen
 		SETUP_PRINT(welcome_str, 0, 0)
@@ -30,9 +30,15 @@ shellexec: 	CLEAR_CHAR(B)
 		SETUP_PRINT(cursor_str, 0, 2)
 		CALL(putstr, _here)
 _here:		CLEAR_CHAR(B)		
-	; Input command
-_loop:		LEA(_loop)
+	; Input command\
+		CALL(readkey, _here1)
+_here1: 	MIB 2
+		MIC 2
+		CALL(putchar, _loop)
+
+_loop: 		LEA(_loop)
 		JMP
+		
 _exit: 		HLT
 
 END

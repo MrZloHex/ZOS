@@ -30,7 +30,8 @@ readkey:	PUB
 		PUC
 		PUD
 
-_loop_readkey:	READ_KEY
+_loop_readkey:	NEXT_KEY
+		READ_KEY
 		PUA
 	; If MSB == 1 then is available to read a key
 		MIB 0b10000000
