@@ -18,6 +18,7 @@ END
 .INCLUDE 	shell.asm
 .INCLUDE 	help.asm
 .INCLUDE 	list.asm
+,INCLUDE 	read.asm
 .INCLUDE 	quit.asm
 
 
