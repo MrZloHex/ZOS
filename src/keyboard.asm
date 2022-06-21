@@ -51,38 +51,57 @@ _loop_readkey:	NEXT_KEY
 		POB
 		RET
 
+	; A - x pos
+	; B - y pos
 	; RET - 0x8300 - string
-readstr:	PUB
-		PUC
+readstr:	PUC
+		PUD
+		PUE
 		
 		MIC 0
-_loop_readstr:	CALL(readkey, _after_rdk)
+		MAD
+		SET_X(D)
+		SET_Y(B)
 
-_after_rdk: 	MIB 0xA
-		CPB
-		LEA(_exit_readstr)
+_rs_str_loop:	CALL(readkey, _rd_str_h1)
+
+_rd_str_h1:	MIE 0xA
+		CPE
+		LEA(_rd_str_exit)
 		JSZ
-		
+
+		PUTCHAR(E)
+		CLEAR_CHAR(E)
+
+		MAE
 		MIH 0x83
-		MCL
+		MIA 0
+		ADC
+		MAL
+		MEA
 		MAM
-	
+
 		MIA 1
 		ADC
 		MAC
-		
-		LEA(_loop_readstr)
+
+		MIA 1
+		ADD
+		MAD
+		SET_X(D)
+
+		LEA(_rs_str_loop)
 		JMP
 
-_exit_readstr:	MIH 0x83
-		MCL
+_rd_str_exit:	MIA 0
+		ADC
+		MAL
 		MIA 0
 		MAM
 
-		MCA
-
+		POE
+		POD
 		POC
-		POB
 		RET
 
 END

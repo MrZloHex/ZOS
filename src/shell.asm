@@ -122,7 +122,7 @@ _cmd_read:	MIB 1
 		LEA(_prc_cmd_exit)
 		JRZ
 
-		CALL(list, _prc_cmd_exit)
+		CALL(read, _prc_cmd_exit)
 
 _prc_cmd_exit:	POE
 		POD
