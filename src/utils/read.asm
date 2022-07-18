@@ -10,7 +10,9 @@ read:      	PUA
 		CALL(putstr, _rd_h1)
 _rd_h1:		SETUP_PRINT(read_enter_address, 0, 23)
 		CALL(putstr, _rd_h2)
-_rd_h2:		SETUP_PRINT(cursor_str, 0, 24)
+_rd_h2:		SETUP_PRINT(erase_cmd_str, 0, 24)
+		CALL(putstr, _rd_rd)
+_rd_rd:		SETUP_PRINT(cursor_str, 0, 24)
 		CALL(putstr, _rd_h3)	
 
 _rd_h3:		MIA 2

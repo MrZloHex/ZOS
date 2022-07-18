@@ -16,11 +16,11 @@ END
 .INCLUDE 	screen.asm
 
 .INCLUDE 	shell.asm
-.INCLUDE 	help.asm
-.INCLUDE 	list.asm
-.INCLUDE 	read.asm
-.INCLUDE 	quit.asm
-
+.INCLUDE 	utils/help.asm
+.INCLUDE 	utils/list.asm
+.INCLUDE 	utils/read.asm
+.INCLUDE 	utils/quit.asm
+.INCLUDE 	utils/write.asm
 
 SECTION TEXT
 	; Initialization
@@ -35,9 +35,6 @@ _welcome: 	SETUP_PRINT(welcome_str, 0, 2)
 _shell: 	CALL(shell, _proc)
 _proc:		CALL(process_cmd, _shell)
 
-_loop: 		LEA(_loop)
-		JMP
-		
 _exit: 		HLT
 
 END

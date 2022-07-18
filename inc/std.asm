@@ -77,7 +77,7 @@ inc_address:	MAH
 		PUH
 		PUL
 		LEA(_exit_inc_addr)
-		JRZ
+		JRC
 		
 		POL
 		POH

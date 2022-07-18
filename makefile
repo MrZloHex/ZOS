@@ -1,5 +1,5 @@
 ASMC = zas
-ASM_FLAGS = build -v
+ASM_FLAGS = build 
 
 EMU = emuZCS
 EMU_FLAGS = run

@@ -8,42 +8,15 @@ list:      	PUA
 
 		SETUP_PRINT(list_msg_1, 0, 2)
 		CALL(putstr, _ls_hr_1)
-_ls_hr_1:	GET_BY(C)
-		MIA 1
-		ADC
-		MAC
-		MID 0
-		LL(list_msg_2, A, B)
+_ls_hr_1:	SETUP_PRINT(list_msg_2, 0, 3)
 		CALL(putstr, _ls_hr_2)
-_ls_hr_2:	GET_BY(C)
-		MIA 1
-		ADC
-		MAC
-		MID 0
-		LL(list_msg_3, A, B)
+_ls_hr_2:	SETUP_PRINT(list_msg_3, 0, 4)
 		CALL(putstr, _ls_hr_3)
-_ls_hr_3:	GET_BY(C)
-		MIA 1
-		ADC
-		MAC
-		MID 0
-		LL(list_msg_4, A, B)
+_ls_hr_3:	SETUP_PRINT(list_msg_4, 0, 5)
 		CALL(putstr, _ls_hr_4)
-
-_ls_hr_4:	GET_BY(C)
-		MIA 1
-		ADC
-		MAC
-		MID 0
-		LL(list_msg_5, A, B)
+_ls_hr_4:	SETUP_PRINT(list_msg_5, 0, 6)
 		CALL(putstr, _ls_hr_5)
-
-_ls_hr_5:	GET_BY(C)
-		MIA 1
-		ADC
-		MAC
-		MID 0
-		LL(list_msg_6, A, B)
+_ls_hr_5:	SETUP_PRINT(list_msg_6, 0, 7)
 		CALL(putstr, _ls_exit)
 
 _ls_exit: 	POE
